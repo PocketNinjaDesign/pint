@@ -1,0 +1,38 @@
+{
+  "name": "pint",
+  "version": "1.0.0",
+  "description": "Just some pint thingy I guess",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --watch",
+    "serve": "webpack-dev-server --open --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PocketNinjaDesign/pint.git"
+  },
+  "author": "pocketninjadesign",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PocketNinjaDesign/pint/issues"
+  },
+  "homepage": "https://github.com/PocketNinjaDesign/pint#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.9.1",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "sass-loader": "^7.0.3",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4",
+    "zingchart": "^2.7.2"
+  }
+}
