@@ -1,12 +1,12 @@
-import Audio from './Audio';
+import WebAudio from './WebAudio';
 import Player from './Player';
 // import ZingDashboard from './charts/ZingDashboard';
 // import GaugeList from './charts/GaugeList';
 
 require('../sass/primary.scss');
 
-const audioTrack = document.getElementById('track');
-const myAudio = new Audio(audioTrack, 128, 32);
+const audioTrack = new Audio('something.mp3');
+const myAudio = new WebAudio(audioTrack, 128, 32);
 const myPlayer = new Player(myAudio);
 
 myPlayer.setButtonEvents();
@@ -67,6 +67,8 @@ function draw() {
       "background-color":"#4a7a8c #FF0066 #fc0",
     }]
   });
+
+  console.log('Status: ', audioTrack.duration, audioTrack.currentTime);
 }
 
 window.onload = () => {
