@@ -1,1 +1,4 @@
 node_modules
+/build/index.html
+/build/primary.css
+/build/bundle.js

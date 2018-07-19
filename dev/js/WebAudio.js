@@ -1,4 +1,4 @@
-class Audio {
+class WebAudio {
   constructor(audioTrack, fftSize, barsTotal) {
     // Cross browser shinnannigins
     this.AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -47,4 +47,4 @@ class Audio {
   }
 }
 
-export default Audio;
+export default WebAudio;
