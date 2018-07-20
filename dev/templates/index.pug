@@ -6,14 +6,22 @@ html(lang='en')
    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous")
    script(src='http://cdn.zingchart.com/zingchart.min.js')
  body
-    div.container
-      div.chart-wrapper
-        div#chart.chart
+    div.base
+      div.vinyl
+        div.lp-wrapper
+          img.lp(src='img/red-lp.jpg')
+          img.lp-dust.anim-spin(src='img/lp-vinyl-dust.png')
+          div.lp-cover
+            img.visual.anim-spin(src='img/dksubconscious.jpg')
+      div.equalizer
+        div.container
+          div.chart-wrapper
+            div#chart.chart
 
-      div.player
-        div#PlayPause.play-pause.fas.fa-play
-        //- button#VolMax max
-        //- button#VolHalf 50%
-        //- button#VolMin min
-        //- button#VolPlus PLUS
-        //- button#VolMinus MINUS
+          div.player
+            div#PlayPause.play-pause.fas.fa-play
+            //- button#VolMax max
+            //- button#VolHalf 50%
+            //- button#VolMin min
+            //- button#VolPlus PLUS
+            //- button#VolMinus MINUS

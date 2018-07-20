@@ -18,7 +18,10 @@
     "url": "https://github.com/PocketNinjaDesign/pint/issues"
   },
   "homepage": "https://github.com/PocketNinjaDesign/pint#readme",
-  "dependencies": {},
+  "dependencies": {
+    "bourbon": "^5.0.1",
+    "bourbon-neat": "^3.0.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
