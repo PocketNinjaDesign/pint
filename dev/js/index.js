@@ -5,21 +5,22 @@ import Player from './Player';
 
 require('../sass/primary.scss');
 
-const audioTrack = new Audio('something.mp3');
-const myAudio = new WebAudio(audioTrack, 128, 32);
-const myPlayer = new Player(myAudio);
+const audioTrack = new Audio('audio/tracks/something.mp3');
+const vinylSound = new Audio('audio/vinyl-sounds/vinyl-crackle-end-loop.mp3');
+vinylSound.loop = true;
+vinylSound.volume = 0.2;
+vinylSound.play();
+
+const waMusic = new WebAudio(audioTrack, 128, 32);
+const waVinylSound = new WebAudio(vinylSound, 128, 32);
+const myPlayer = new Player(waMusic, vinylSound);
 
 myPlayer.setButtonEvents();
 
 audioTrack.onended = () => {
   myPlayer.end();
+  vinylSound.pause();
 }
-
-// const gaugeEqualizer = new GaugeList('gaugeGrid');
-// gaugeEqualizer.createList(myAudio.getData());
-
-// const dialBoard = new ZingDashboard('newChart', myAudio.getData());
-// dialBoard.activate();
 
 zingchart.render({
   id: 'chart',
@@ -47,29 +48,40 @@ zingchart.render({
       'border-radius': '10px',
     },
     series: [{
-      values: myAudio.getData(),
+      values: waMusic.getData(),
       "background-color":"#6666FF #FF0066",
     }],
   }
 });
 
+
+
 function draw() {
   requestAnimationFrame(draw);
 
-  const audioData = myAudio.updateData();
+  if (myPlayer.getPlayState()) {
+    const audioData = waMusic.updateData();
+    const vinylAudioData = waVinylSound.updateData();
 
-  // gaugeEqualizer.updateList(audioData);
-  // dialBoard.updateConfig(audioData);
+    // Combine static vinyl and music to one audioData
+    const audioDataOutput = audioData.map((val, index) => {
+      return val + vinylAudioData[index];
+    });
 
-  zingchart.exec('chart', 'setseriesdata', {
-    data: [{
-      values: audioData,
-      "background-color":"#4a7a8c #FF0066 #fc0",
-    }]
-  });
+    zingchart.exec('chart', 'setseriesdata', {
+      data: [{
+        values: vinylAudioData,
+        "background-color":"#4a7a8c #FF0066 #fc0",
+      }]
+    });
 
-  console.log('Status: ', audioTrack.duration, audioTrack.currentTime);
+    if (vinylSound.currentTime > 9) {
+      vinylSound.currentTime = 0;
+    }
+  }
 }
+
+
 
 window.onload = () => {
   draw();
