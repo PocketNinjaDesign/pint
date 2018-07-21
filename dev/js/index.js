@@ -5,14 +5,16 @@ import Player from './Player';
 
 require('../sass/primary.scss');
 
+const audioCtx = new (window.AudioContext || window.webkitAudioContext);
+
 const audioTrack = new Audio('audio/tracks/something.mp3');
 const vinylSound = new Audio('audio/vinyl-sounds/vinyl-crackle-end-loop.mp3');
 vinylSound.loop = true;
 vinylSound.volume = 0.2;
 vinylSound.play();
 
-const waMusic = new WebAudio(audioTrack, 128, 32);
-const waVinylSound = new WebAudio(vinylSound, 128, 32);
+const waMusic = new WebAudio(audioCtx, audioTrack, 128, 32);
+const waVinylSound = new WebAudio(audioCtx, vinylSound, 128, 32);
 const myPlayer = new Player(waMusic, vinylSound);
 
 myPlayer.setButtonEvents();
@@ -70,7 +72,7 @@ function draw() {
 
     zingchart.exec('chart', 'setseriesdata', {
       data: [{
-        values: vinylAudioData,
+        values: audioDataOutput,
         "background-color":"#4a7a8c #FF0066 #fc0",
       }]
     });

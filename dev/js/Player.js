@@ -11,12 +11,12 @@ class Player {
       if (this.playState) {
         this.audio.pause();
         this.setPausedMode();
-        this.fx.pause();
+        // this.fx.pause();
       }
       else {
         this.audio.play();
         this.setPlayingMode();
-        this.fx.play();
+        // this.fx.play();
       }
 
       this.playState = !this.playState;
@@ -53,7 +53,7 @@ class Player {
   setPausedMode() {
     this.playPause.classList.remove('fa-pause');
     this.playPause.classList.add('fa-play');
-    this.fx.play();
+    // this.fx.play();
   }
 
   end() {
