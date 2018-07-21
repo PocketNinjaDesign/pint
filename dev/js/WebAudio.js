@@ -1,11 +1,8 @@
 class WebAudio {
-  constructor(audioTrack, fftSize, barsTotal) {
-    // Cross browser shinnannigins
-    this.AudioContext = window.AudioContext || window.webkitAudioContext;
-
-    this.barsTotal = barsTotal;
+  constructor(audioCtx, audioTrack, fftSize, barsTotal) {
+    this.audioCtx = audioCtx;
     this.audioTrack = audioTrack;
-    this.audioCtx = new AudioContext();
+    this.barsTotal = barsTotal;
     this.audioSrc = this.audioCtx.createMediaElementSource(this.audioTrack);
 
     this.analyser = this.audioCtx.createAnalyser();
