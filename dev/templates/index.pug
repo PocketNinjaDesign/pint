@@ -7,12 +7,8 @@ html(lang='en')
    script(src='http://cdn.zingchart.com/zingchart.min.js')
  body
     div.base
-      div.vinyl
-        div.lp-wrapper
-          img.lp(src='img/red-lp.jpg')
-          img.lp-dust.anim-spin(src='img/lp-vinyl-dust.png')
-          div.lp-cover
-            img.visual.anim-spin(src='img/dksubconscious.jpg')
+      div.vinyl-container
+        include components/vinyl-lp
       div.equalizer
         div.container
           div.chart-wrapper

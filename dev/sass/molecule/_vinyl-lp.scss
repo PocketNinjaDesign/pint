@@ -1,0 +1,23 @@
+.vinyl-lp {
+  width: 264px;
+  height: 264px;
+
+  .lp,
+  .lp-dust {
+    @include position(absolute, 0 null null 0);
+    width: 100%;
+    height: 100%;
+  }
+  .lp-cover {
+    @include mixinCenterXY();
+    width: 35%;
+    height: 35%;
+    border-radius: 50%;
+    overflow: hidden;
+
+    .visual {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
