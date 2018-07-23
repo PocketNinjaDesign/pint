@@ -18,6 +18,10 @@
   height: 50%;
   background: #fff;
 
+  .bttn-glass {
+    @include position(absolute, 100px 0 0 280px);
+  }
+
   .vinyl-lp {
     @include mixinCenterXY();
   }

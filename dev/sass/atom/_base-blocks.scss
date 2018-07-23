@@ -1,0 +1,13 @@
+
+.base-block-top {
+  @include position(absolute, 0 null null 0);
+  width: 100%;
+  height: 100%;
+  background: #eee;
+}
+
+.base-block-bottom {
+  @include position(absolute, null null 0 0);
+  width: 100%;
+  height: 10%;
+}

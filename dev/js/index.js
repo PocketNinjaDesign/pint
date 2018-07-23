@@ -1,13 +1,9 @@
 import Hammer from 'hammerjs';
-// import { TweenLite } from 'gsap'
 
 import WebAudio from './WebAudio';
 import Player from './Player';
-// import ZingDashboard from './charts/ZingDashboard';
-// import GaugeList from './charts/GaugeList';
 
 require('../sass/primary.scss');
-
 
 let volume = document.getElementById('Volume');
 let mc = new Hammer(volume);
@@ -30,7 +26,7 @@ const audioCtx = new (window.AudioContext || window.webkitAudioContext);
 const audioTrack = new Audio('audio/tracks/something.mp3');
 const vinylSound = new Audio('audio/vinyl-sounds/vinyl-crackle-end-loop.mp3');
 vinylSound.loop = true;
-vinylSound.volume = 0.2;
+vinylSound.volume = 0.0;
 vinylSound.play();
 
 const waMusic = new WebAudio(audioCtx, audioTrack, 128, 32);
