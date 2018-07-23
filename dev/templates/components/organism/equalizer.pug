@@ -1,10 +1,20 @@
-div.container
-  div.chart-wrapper
-    div#chart.chart
+.container
+  include ../atom/lp-arm
+  #Volume.volume
+    .fas.fa-volume-up
+  #ShowList.show-list
+    .fas.fa-list-ul
+  .smooth-shape-bottom.dark
 
-  div.player
-    div#PlayPause.play-pause.fas.fa-play
-    div#Volume.volume
+  .chart-wrapper
+    #chart.chart
+
+  .player
+    #PlayPause.play-pause.fas.fa-play
+    #NextTrack.bttn-next-track
+      .fas.fa-fast-forward
+    #RewindTrack.bttn-rewind
+      .fas.fa-fast-forward
     //- button#VolMax max
     //- button#VolHalf 50%
     //- button#VolMin min

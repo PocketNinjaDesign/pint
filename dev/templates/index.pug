@@ -1,23 +1,23 @@
 doctype html
 html(lang='en')
  head
-   title Pug
+   title DkSubconscious Music Player &amp; Production
    meta(name="viewport" content="width=device-width, initial-scale=1.0")
    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous")
    script(src='http://cdn.zingchart.com/zingchart.min.js')
  body
-    div.base-block-top
-    div.base-block-bottom
+    .base-block-top
+    .base-block-bottom
 
-    div.base.landing
-      div#WelcomeButton.welcome-bttn
-        div.glass-wrapper
+    .base.landing
+      #WelcomeButton.welcome-bttn
+        .glass-wrapper
         include components/bttns/glass
 
-      div#TopContainer.vinyl-container
+      #TopContainer.vinyl-container
         include components/molecule/options-menu
         include components/organism/music-player
         include components/organism/production-view
 
-      div#BottomContainer.equalizer
+      #BottomContainer.bottom-section
         include components/organism/equalizer
