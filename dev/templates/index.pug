@@ -10,22 +10,14 @@ html(lang='en')
     div.base-block-bottom
 
     div.base.landing
-      div.welcome-bttn
+      div#WelcomeButton.welcome-bttn
         div.glass-wrapper
         include components/bttns/glass
 
-      div.vinyl-container
-        include components/vinyl-lp
-      div.equalizer
-        div.container
-          div.chart-wrapper
-            div#chart.chart
+      div#TopContainer.vinyl-container
+        include components/molecule/options-menu
+        include components/organism/music-player
+        include components/organism/production-view
 
-          div.player
-            div#PlayPause.play-pause.fas.fa-play
-            div#Volume.volume
-            //- button#VolMax max
-            //- button#VolHalf 50%
-            //- button#VolMin min
-            //- button#VolPlus PLUS
-            //- button#VolMinus MINUS
+      div#BottomContainer.equalizer
+        include components/organism/equalizer

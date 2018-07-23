@@ -1,24 +1,26 @@
 import Hammer from 'hammerjs';
 
+import PageManager from './page/PageManager';
+
 import WebAudio from './WebAudio';
 import Player from './Player';
 
 require('../sass/primary.scss');
 
-let volume = document.getElementById('Volume');
-let mc = new Hammer(volume);
-let rotate = 0;
+// let volume = document.getElementById('Volume');
+// let mc = new Hammer(volume);
+// let rotate = 0;
 
-mc.get('pan').set({
-  direction: Hammer.DIRECTION_VERTICAL
-});
+// mc.get('pan').set({
+//   direction: Hammer.DIRECTION_VERTICAL
+// });
 
-mc.on("panup pandown press", (ev) => {
-  // console.log(`gesture: ${ev.type}`);
-  console.log(ev.velocityY);
-  rotate += ev.velocityY;
-  volume.style.transform = `rotate(${rotate}deg)`;
-});
+// mc.on("panup pandown press", (ev) => {
+//   // console.log(`gesture: ${ev.type}`);
+//   console.log(ev.velocityY);
+//   rotate += ev.velocityY;
+//   volume.style.transform = `rotate(${rotate}deg)`;
+// });
 
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext);
@@ -103,4 +105,5 @@ function draw() {
 
 window.onload = () => {
   draw();
+  PageManager.init();
 }
