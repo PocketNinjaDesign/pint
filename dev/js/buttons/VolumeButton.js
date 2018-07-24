@@ -7,6 +7,10 @@ class VolumeButton extends StaticRotationDragger {
     this.staticDragger;
   }
 
+  updateConnection(target) {
+    this.target = target;
+  }
+
   setValue(value) {
     this.target.setVolume(value);
   }
