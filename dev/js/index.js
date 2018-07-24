@@ -4,6 +4,8 @@ import PageManager from './page/PageManager';
 
 import WebAudio from './WebAudio';
 import Player from './Player';
+import GraphicEqualizer from './components/GraphicEqualizer';
+import TrackTimeline from './components/TrackTimeline';
 
 require('../sass/primary.scss');
 
@@ -22,6 +24,9 @@ require('../sass/primary.scss');
 //   volume.style.transform = `rotate(${rotate}deg)`;
 // });
 
+const equalizer = new GraphicEqualizer('GraphicEqualizer', 32, 138, 500);
+const equalizerTop = new GraphicEqualizer('GraphicEqualizerTop', 32, 300, 100, '%');
+const timeline = new TrackTimeline('TrackTimeline', 50, 73);
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext);
 
@@ -42,39 +47,6 @@ audioTrack.onended = () => {
   vinylSound.pause();
 }
 
-zingchart.render({
-  id: 'chart',
-  height: '200',
-  borderWidth: 10,
-  data: {
-    "scale-x": {
-      "line-color":"#0f1011",
-      item: {
-        "font-color": "#0f1011"
-      },
-      guide: {
-        visible: 0
-      }
-    },
-    "scale-y":{
-      "line-color":"#0f1011",
-      item: {
-        "font-color": "#0f1011"
-      }
-    },
-    backgroundColor: 'none',
-    type: 'bar',
-    plot: {
-      'border-radius': '10px',
-    },
-    series: [{
-      values: waMusic.getData(),
-      "background-color":"#6666FF #FF0066",
-    }],
-  }
-});
-
-
 
 function draw() {
   requestAnimationFrame(draw);
@@ -88,12 +60,9 @@ function draw() {
       return val + vinylAudioData[index];
     });
 
-    zingchart.exec('chart', 'setseriesdata', {
-      data: [{
-        values: audioDataOutput,
-        "background-color":"#4a7a8c #FF0066 #fc0",
-      }]
-    });
+    equalizer.plotNewPositions(audioDataOutput);
+    equalizerTop.plotNewPositions(audioDataOutput);
+    timeline.setNewPosition(audioTrack.currentTime, audioTrack.duration);
 
     if (vinylSound.currentTime > 9) {
       vinylSound.currentTime = 0;
@@ -106,4 +75,7 @@ function draw() {
 window.onload = () => {
   draw();
   PageManager.init();
+  equalizer.init();
+  equalizerTop.init();
+  timeline.init();
 }

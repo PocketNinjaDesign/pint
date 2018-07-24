@@ -1,4 +1,9 @@
 
 .vinyl-container {
   display: none;
+
+  .options-menu {
+    @include mixinCenterX();
+    bottom: 280px;
+  }
 }

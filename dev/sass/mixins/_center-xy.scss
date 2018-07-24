@@ -7,3 +7,13 @@
 .mixin-center-xy {
   @include mixinCenterXY();
 }
+
+@mixin mixinCenterX {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mixin-center-x {
+  @include mixinCenterX();
+}

@@ -1,20 +1,19 @@
 .container
   include ../atom/lp-arm
-  #Volume.volume
-    .fas.fa-volume-up
-  #ShowList.show-list
-    .fas.fa-list-ul
-  .smooth-shape-bottom.dark
+  include ../molecule/primary-volume
+  .show-list
+    #ShowList.bttn.light.hover-retain.active.fas.fa-list-ul
 
-  .chart-wrapper
-    #chart.chart
+  .smooth-shape.bottom.dark
 
-  .player
-    #PlayPause.play-pause.fas.fa-play
-    #NextTrack.bttn-next-track
-      .fas.fa-fast-forward
-    #RewindTrack.bttn-rewind
-      .fas.fa-fast-forward
+  include ../molecule/graphic-equalizer
+  //- .graphic-equalizer
+  //-   #chart.chart
+
+  .player-controls
+    #RewindTrack.bttn.light.active.rewind.fas.fa-fast-forward
+    #PlayPause.bttn.light.active.play-pause.fas.fa-play
+    #NextTrack.bttn.light.active.forward.fas.fa-fast-forward
     //- button#VolMax max
     //- button#VolHalf 50%
     //- button#VolMin min

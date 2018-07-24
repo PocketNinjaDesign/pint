@@ -1,0 +1,34 @@
+
+.smooth-shape {
+  position: relative;
+  width: 540px;
+  height: 124px;
+  overflow: hidden;
+
+  &:before {
+    position: absolute;
+    display: block;
+    content: '';
+    border-radius: 50%;
+    width: 100%;
+    height: 200%;
+  }
+
+  &.bottom {
+    &:before {
+      bottom: 0;
+    }
+  }
+
+  &.light {
+    &:before {
+      background: linear-gradient(#e1e1e1, #eee 50%);
+    }
+  }
+
+  &.dark {
+    &:before {
+      background: linear-gradient(#0f1011 50%, #1b1d1e 100%);
+    }
+  }
+}

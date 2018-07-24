@@ -1,0 +1,19 @@
+
+.music-player {
+  height: 100%;
+
+  .primary-title {
+    @include mixinCenterX();
+    bottom: 330px;
+  }
+
+  .smooth-shape {
+    @include mixinCenterX();
+    bottom: 120px;
+  }
+
+  .track-details {
+    @include mixinCenterX();
+    bottom: 156px;
+  }
+}

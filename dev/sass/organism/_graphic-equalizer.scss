@@ -1,0 +1,52 @@
+
+.graphic-equalizer {
+  .bar {
+    display: inline-block;
+    height: 100%;
+
+    .inner {
+      position: relative;
+      height: 100%;
+
+      .value {
+        display: block;
+        height: 0;
+      }
+    }
+  }
+
+  &.blue-ice {
+    .bar {
+      padding: 0 4px;
+
+      .inner {
+        background: #000;
+        border-radius: 10px;
+        height: 100%;
+  
+        .value {
+          background: #3891eb;
+          height: 0;
+          border-radius: 10px;
+          box-shadow: 0 10px 20px rgba(#3891eb, 0.5);
+        }
+      }
+    }
+  }
+
+  &.subtle-full {
+    height: 100%;
+
+    .inner {
+      height: 100%;
+
+      .value {
+        @include position(absolute, null null 0 0);
+        // background: rgba(0,0,0,0.02);
+        background: linear-gradient(rgba(0,0,0,0.02), rgba(0,0,0,0.2));
+        height: 0;
+        width: 100%;
+      }
+    }
+  }
+}
