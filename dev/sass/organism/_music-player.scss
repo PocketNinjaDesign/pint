@@ -1,5 +1,6 @@
 
 .music-player {
+  position: relative;
   height: 100%;
 
   .primary-title {
@@ -15,5 +16,9 @@
   .track-details {
     @include mixinCenterX();
     bottom: 156px;
+  }
+
+  .graphic-equalizer {
+    z-index: 0;
   }
 }

@@ -1,5 +1,3 @@
-import Hammer from 'hammerjs';
-
 import PageManager from './page/PageManager';
 
 import WebAudio from './WebAudio';
@@ -8,21 +6,6 @@ import GraphicEqualizer from './components/GraphicEqualizer';
 import TrackTimeline from './components/TrackTimeline';
 
 require('../sass/primary.scss');
-
-// let volume = document.getElementById('Volume');
-// let mc = new Hammer(volume);
-// let rotate = 0;
-
-// mc.get('pan').set({
-//   direction: Hammer.DIRECTION_VERTICAL
-// });
-
-// mc.on("panup pandown press", (ev) => {
-//   // console.log(`gesture: ${ev.type}`);
-//   console.log(ev.velocityY);
-//   rotate += ev.velocityY;
-//   volume.style.transform = `rotate(${rotate}deg)`;
-// });
 
 const equalizer = new GraphicEqualizer('GraphicEqualizer', 32, 138, 500);
 const equalizerTop = new GraphicEqualizer('GraphicEqualizerTop', 32, 300, 100, '%');

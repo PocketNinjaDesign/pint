@@ -16,6 +16,7 @@ class WebAudio {
     this.bufferLength = this.analyser.frequencyBinCount;
     this.dataArray = new Uint8Array(this.bufferLength);
     this.analyser.getByteFrequencyData(this.dataArray);
+    this.setVolume(0.5);
   }
 
   getData() {
