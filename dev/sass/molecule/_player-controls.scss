@@ -1,0 +1,29 @@
+
+.player-controls {
+  .rewind,
+  .play-pause {
+    margin-right: 20px;
+  }
+
+  .rewind,
+  .forward {
+    position: relative;
+    top: -20px;
+  }
+
+  .rewind {
+    &:before {
+      transform: translate(-50%, -50%) rotate(-180deg);
+    }
+  }
+
+  .play-pause {
+    width: 63px;
+    height: 63px;
+    font-size: 25px;
+
+    &.fa-play:before {
+      transform: translate(-40%, -50%);
+    }
+  }
+}

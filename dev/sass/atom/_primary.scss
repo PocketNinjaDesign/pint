@@ -1,6 +1,6 @@
 
 * {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -19,5 +19,7 @@ body {
 
 body {
   text-align: center;
-  background-color: #0f1011;
+  background-color: $darkestColour;
+  @include primaryFont();
+  overflow: hidden;
 }

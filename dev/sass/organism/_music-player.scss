@@ -1,0 +1,24 @@
+
+.music-player {
+  position: relative;
+  height: 100%;
+
+  .primary-title {
+    @include mixinCenterX();
+    bottom: 330px;
+  }
+
+  .smooth-shape {
+    @include mixinCenterX();
+    bottom: 120px;
+  }
+
+  .track-details {
+    @include mixinCenterX();
+    bottom: 156px;
+  }
+
+  .graphic-equalizer {
+    z-index: 0;
+  }
+}

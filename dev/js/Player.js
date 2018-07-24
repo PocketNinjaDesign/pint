@@ -1,9 +1,12 @@
+import VolumeButton from './buttons/VolumeButton';
+
 class Player {
   constructor(audio, effectsAudio) {
     this.audio = audio;
     this.fx = effectsAudio;
     this.playState = false;
     this.playPause = document.getElementById('PlayPause');
+    this.volumeBttn = new VolumeButton(this.audio);
   }
 
   setButtonEvents() {

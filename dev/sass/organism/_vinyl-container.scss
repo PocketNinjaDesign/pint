@@ -1,0 +1,10 @@
+
+.vinyl-container {
+  display: none;
+
+  .options-menu {
+    @include mixinCenterX();
+    bottom: 280px;
+    z-index: 10;
+  }
+}

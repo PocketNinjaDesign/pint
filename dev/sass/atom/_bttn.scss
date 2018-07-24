@@ -1,0 +1,56 @@
+
+.bttn {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: #252729;
+  font-size: 20px;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: all 200ms;
+
+  &:before {
+    @include mixinCenterXY();
+    transition: color 100ms;
+  }
+
+  &.selected {
+    background: #cfcfcf;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  &.active {
+    &:hover {
+      transform: scale(1.1);
+      background: rgba(255,255,255, 0.5);
+      color: $darkestColour;
+      box-shadow: none;
+    }
+  }
+
+  &.light {
+    background: #eee;
+    color: $darkestColour;
+
+    &.active {
+      &:hover {
+        color: #fff;
+        transform: scale(1.2);
+        background: rgba(255,255,255, 0.02);
+      }
+    }
+  }
+
+  &.light.hover-retain {
+    &.active {
+      &:hover {
+        color: $darkestColour;
+        background: rgba(255,255,255, 1);
+      }
+    }
+  }
+}

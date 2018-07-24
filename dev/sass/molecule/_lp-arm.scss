@@ -1,0 +1,23 @@
+.lp-arm-base {
+  position: relative;
+  width: 55px;
+  height: 55px;
+
+  .arm-base {
+  }
+  .arm-pivot {
+    @include position(absolute, 50% null null 50%);
+    width: 1px;
+    height: 1px;
+    background: #f00;
+
+    // Set to the start of a track
+    // transform: rotate(50deg); // END = 73deg
+
+    .arm {
+      @include position(absolute, -210px null null -20px);
+      width: 41px;
+      height: 226px;
+    }
+  }
+}

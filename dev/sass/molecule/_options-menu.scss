@@ -1,0 +1,39 @@
+
+.options-menu {
+  li {
+    display: inline-block;
+  }
+  .player {
+    margin-right: 10px;
+  }
+  .production {
+    .fas {
+      &:before {
+        display: block;
+        transform: translate(-50%, -50%) rotate(-90deg);
+      }
+    }
+  }
+
+  // .bttn {
+  //   position: relative;
+  //   border-radius: 50%;
+  //   width: 50px;
+  //   height: 50px;
+  //   background: #252729;
+  //   font-size: 20px;
+  //   color: #fff;
+  //   box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+  //   cursor: pointer;
+
+  //   .fas {
+  //     @include mixinCenterXY();
+  //   }
+
+  //   &.active {
+  //     background: #cfcfcf;
+  //     box-shadow: none;
+  //     cursor: default;
+  //   }
+  // }
+}

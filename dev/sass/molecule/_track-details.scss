@@ -1,0 +1,10 @@
+
+.track-details {
+  .track-name {
+    @include TitleFont();
+    font-weight: 200;
+  }
+  .track-artist {
+    @include TitleFont();
+  }
+}
