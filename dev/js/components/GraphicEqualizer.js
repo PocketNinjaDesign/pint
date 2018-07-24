@@ -28,7 +28,9 @@ class GraphicEqualizer {
   plotNewPositions(data) {
     for(let i = 0; i < this.barList.length; i += 1) {
       let bar = this.barList[i].getElementsByClassName('value')[0];
-      bar.style.height = `${this.visualizerHeight / 300 * data[i]}px`;
+      let height = this.visualizerHeight / 500 * data[i];
+      // console.log(height);
+      bar.style.height = `${height}px`;
     }
   }
 }
