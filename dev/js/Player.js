@@ -49,7 +49,7 @@ class Player {
     });
 
     this.previousTrackButton.addEventListener('click', () => {
-      if (this.waMusic.getAudioCurrentTime() < 10) {
+      if (this.waMusic.getAudioCurrentTime() < 3) {
         const data = TrackListService.getPreviousTrack();
         TrackDetails.changeDetails(data);
         this.waMusic.getAudioTrack().pause();
@@ -59,6 +59,9 @@ class Player {
         if (this.playState) {
           this.waMusic.getAudioTrack().play();
         }
+      }
+      else {
+        this.waMusic.setAudioCurrentTime(0);
       }
     });
 

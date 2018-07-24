@@ -52,6 +52,10 @@ class WebAudio {
     return this.audioTrack.currentTime;
   }
 
+  setAudioCurrentTime(value) {
+    this.audioTrack.currentTime = value;
+  }
+
   setNewAudioTrack(data) {
     this.audioTrack.src = data.src;
   }
