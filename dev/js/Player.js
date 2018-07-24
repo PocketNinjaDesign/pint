@@ -40,7 +40,8 @@ class Player {
       const data = TrackListService.getNextTrack();
       TrackDetails.changeDetails(data);
       this.waMusic.getAudioTrack().pause();
-      this.waMusic = new WebAudio(this.audioCtx, data.src, 128, 32);
+      this.waMusic = new WebAudio(this.audioCtx, data.src, 128, 32, this.waMusic.getVolume());
+      this.volumeBttn.updateConnection(this.waMusic);
 
       if (this.playState) {
         this.waMusic.getAudioTrack().play();
@@ -52,7 +53,8 @@ class Player {
         const data = TrackListService.getPreviousTrack();
         TrackDetails.changeDetails(data);
         this.waMusic.getAudioTrack().pause();
-        this.waMusic = new WebAudio(this.audioCtx, data.src, 128, 32);
+        this.waMusic = new WebAudio(this.audioCtx, data.src, 128, 32, this.waMusic.getVolume());
+        this.volumeBttn.updateConnection(this.waMusic);
 
         if (this.playState) {
           this.waMusic.getAudioTrack().play();
