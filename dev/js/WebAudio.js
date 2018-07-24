@@ -1,7 +1,7 @@
 class WebAudio {
-  constructor(audioCtx, audioTrack, fftSize, barsTotal) {
+  constructor(audioCtx, audioTrackSrc, fftSize, barsTotal, startVolume = 0.5) {
     this.audioCtx = audioCtx;
-    this.audioTrack = audioTrack;
+    this.audioTrack = new Audio(audioTrackSrc);
     this.barsTotal = barsTotal;
     this.audioSrc = this.audioCtx.createMediaElementSource(this.audioTrack);
 
@@ -16,7 +16,7 @@ class WebAudio {
     this.bufferLength = this.analyser.frequencyBinCount;
     this.dataArray = new Uint8Array(this.bufferLength);
     this.analyser.getByteFrequencyData(this.dataArray);
-    this.setVolume(0.5);
+    this.setVolume(startVolume);
   }
 
   getData() {
@@ -42,6 +42,18 @@ class WebAudio {
 
   play() {
     this.audioTrack.play();
+  }
+
+  getAudioTrack() {
+    return this.audioTrack;
+  }
+
+  getAudioCurrentTime() {
+    return this.audioTrack.currentTime;
+  }
+
+  setNewAudioTrack(data) {
+    this.audioTrack.src = data.src;
   }
 }
 
