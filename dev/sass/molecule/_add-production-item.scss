@@ -1,0 +1,34 @@
+
+.add-production-item {
+  position: relative;
+  display: inline-block;
+  width: 58px;
+  height: 230px;
+  border-radius: 10px;
+  border: 1px solid #bfbfbf;
+  cursor: pointer;
+  transition: border-color 100ms;
+
+  &:hover {
+    border-color: #82878D;
+
+    .content-wrapper {
+      color: #82878D;
+    }
+  }
+
+  .content-wrapper {
+    @include mixinCenterXY();
+    color: #cecece;
+    transition: color 100ms;
+
+    .icon {
+      transform: rotate(45deg);
+    }
+    .add {
+      margin: 0;
+      @include TitleFont();
+      font-size: 18px;
+    }
+  }
+}

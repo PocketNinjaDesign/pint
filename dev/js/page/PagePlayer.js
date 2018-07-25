@@ -3,6 +3,7 @@ class PagePlayer {
     this.topContainer = document.getElementById('TopContainer');
     this.bottomContainer = document.getElementById('BottomContainer');
     this.MusicPlayer = document.getElementById('MusicPlayer');
+    this.LPArmBase = document.getElementById('LpArmBase');
   }
 
   init() {
@@ -12,6 +13,7 @@ class PagePlayer {
 
   show() {
     this.MusicPlayer.style.display = 'block';
+    this.LPArmBase.style.display = 'block';
   }
 
   hide() {
@@ -20,6 +22,7 @@ class PagePlayer {
     // return a promise of completion
     return new Promise((resolve) => {
       this.MusicPlayer.style.display = 'none';
+      this.LPArmBase.style.display = 'none';
       resolve();
     });
   }

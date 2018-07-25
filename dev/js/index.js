@@ -1,12 +1,16 @@
+import AudioService from './services/Audio.service';
 import PageManager from './page/PageManager';
 import Player from './Player';
+import Test from './Test';
 
 require('../sass/primary.scss');
 
-const audioCtx = new (window.AudioContext || window.webkitAudioContext);
-const myPlayer = new Player(audioCtx);
+PageManager.init();
+
+Test.add(100);
+Test.add(56);
 
 window.onload = () => {
-  myPlayer.init();
-  PageManager.init();
+  AudioService.init();
+  Player.init();
 }

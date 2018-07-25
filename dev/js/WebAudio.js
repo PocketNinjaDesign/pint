@@ -1,6 +1,8 @@
+import AudioService from './services/Audio.service';
+
 class WebAudio {
-  constructor(audioCtx, audioTrackSrc, fftSize, barsTotal, startVolume = 0.5) {
-    this.audioCtx = audioCtx;
+  constructor(audioTrackSrc, fftSize, barsTotal, startVolume = 0.5) {
+    this.audioCtx = AudioService.getAudioCtx();
     this.audioTrack = new Audio(audioTrackSrc);
     this.barsTotal = barsTotal;
     this.audioSrc = this.audioCtx.createMediaElementSource(this.audioTrack);

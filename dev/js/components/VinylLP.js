@@ -1,7 +1,7 @@
 
 class VinylLP {
-  constructor(targetId) {
-    this.vinyl = document.getElementById(targetId);
+  constructor() {
+    this.vinyl = document.getElementById('VinylLP');
     this.dust = this.vinyl.getElementsByClassName('lp-dust')[0];
     this.visual = this.vinyl.getElementsByClassName('visual')[0];
   }
@@ -17,4 +17,4 @@ class VinylLP {
   }
 }
 
-export default VinylLP;
+export default new VinylLP();

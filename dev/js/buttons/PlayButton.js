@@ -1,28 +1,27 @@
 
 class PlayButton {
-  constructor(targetId) {
-    this.targetId = targetId;
-    this.playPause;
+  constructor() {
+    this.bttn;
   }
 
   init(thisPlayer) {
-    this.playPause = document.getElementById('PlayPause');
+    this.bttn = document.getElementById('PlayPause');
     this.setButtonEvents(thisPlayer);
   }
 
   setButtonEvents(thisPlayer) {
-    this.playPause.addEventListener('click', thisPlayer.setPlayPause.bind(thisPlayer));
+    this.bttn.addEventListener('click', thisPlayer.setPlayPause.bind(thisPlayer));
   }
 
   setPlayingMode() {
-    this.playPause.classList.remove('fa-play');
-    this.playPause.classList.add('fa-pause');
+    this.bttn.classList.remove('fa-play');
+    this.bttn.classList.add('fa-pause');
   }
 
   setPausedMode() {
-    this.playPause.classList.remove('fa-pause');
-    this.playPause.classList.add('fa-play');
+    this.bttn.classList.remove('fa-pause');
+    this.bttn.classList.add('fa-play');
   }
 }
 
-export default PlayButton;
+export default new PlayButton();

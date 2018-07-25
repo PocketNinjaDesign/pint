@@ -20,7 +20,7 @@ class GraphicEqualizer {
       this.barList[i] = document.createElement("div");
       this.barList[i].setAttribute('class', 'bar');
       this.barList[i].style.width = `${this.width / this.totalBars}${this.measurement}`;
-      this.barList[i].innerHTML = '<div class="inner"><div class="value"></div></div>'
+      this.barList[i].innerHTML = '<div class="inner"><div class="value"></div></div>';
       this.targetContainer.appendChild(this.barList[i]);
     }
   }
@@ -29,7 +29,6 @@ class GraphicEqualizer {
     for(let i = 0; i < this.barList.length; i += 1) {
       let bar = this.barList[i].getElementsByClassName('value')[0];
       let height = this.visualizerHeight / 500 * data[i];
-      // console.log(height);
       bar.style.height = `${height}px`;
     }
   }

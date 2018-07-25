@@ -1,106 +1,69 @@
-import GraphicEqualizer from './components/GraphicEqualizer';
+import AudioService from './services/Audio.service';
+import GraphicEqualizerService from './components/GraphicEqualizer.service';
+import NextButton from './buttons/NextButton';
 import PlayButton from './buttons/PlayButton';
+import PreviousButton from './buttons/PreviousButton';
 import TrackDetails from './musicTracks/TrackDetails';
 import TrackListService from './musicTracks/TrackList.service';
 import TrackTimeline from './components/TrackTimeline';
 import VinylLP from './components/VinylLP';
 import VolumeButton from './buttons/VolumeButton';
-import WebAudio from './WebAudio';
+
+import Test from './Test';
 
 class Player {
-  constructor(audioCtx) {
-    this.audioCtx = audioCtx;
+  constructor() {
     this.playState = false;
     this.playPauseButton;
     this.volumeBttn;
-
-    this.equalizer;
-    this.equalizerTop;
     this.timeline;
-
-    this.waMusic;
-    this.waVinylSound;
-
     this.frameLoop;
-
-    this.vinylLP;
-
-    this.nextTrackButton;
-    this.previousTrackButton;
   }
 
   init() {
-    this.playPauseButton = new PlayButton('PlayPause');
-    this.playPauseButton.init(this);
+    console.log(Test.getNumber());
 
-    this.nextTrackButton = document.getElementById('NextTrack');
-    this.previousTrackButton = document.getElementById('RewindTrack');
-
-    this.nextTrackButton.addEventListener('click', () => {
-      const data = TrackListService.getNextTrack();
-      TrackDetails.changeDetails(data);
-      this.waMusic.getAudioTrack().pause();
-      this.waMusic = new WebAudio(this.audioCtx, data.src, 128, 32, this.waMusic.getVolume());
-      this.volumeBttn.updateConnection(this.waMusic);
-
-      if (this.playState) {
-        this.waMusic.getAudioTrack().play();
-      }
-    });
-
-    this.previousTrackButton.addEventListener('click', () => {
-      if (this.waMusic.getAudioCurrentTime() < 3) {
-        const data = TrackListService.getPreviousTrack();
-        TrackDetails.changeDetails(data);
-        this.waMusic.getAudioTrack().pause();
-        this.waMusic = new WebAudio(this.audioCtx, data.src, 128, 32, this.waMusic.getVolume());
-        this.volumeBttn.updateConnection(this.waMusic);
-
-        if (this.playState) {
-          this.waMusic.getAudioTrack().play();
-        }
-      }
-      else {
-        this.waMusic.setAudioCurrentTime(0);
-      }
-    });
+    PreviousButton.init();
+    NextButton.init();
+    PlayButton.init(this);
 
     TrackDetails.changeDetails(TrackListService.getCurrentTrackData());
 
-    this.vinylLP = new VinylLP('VinylLP');
+    GraphicEqualizerService.addNewEqualizer('GraphicEqualizer', 32, 138, 500, 'px');
+    GraphicEqualizerService.addNewEqualizer('GraphicEqualizerTop', 32, 300, 100, '%');
 
-    this.equalizer = new GraphicEqualizer('GraphicEqualizer', 32, 138, 500);
-    this.equalizerTop = new GraphicEqualizer('GraphicEqualizerTop', 32, 300, 100, '%');
     this.timeline = new TrackTimeline('TrackTimeline', 50, 73);
 
-    this.waMusic = new WebAudio(this.audioCtx, TrackListService.getCurrentTrackData().src, 128, 32);
-    this.waVinylSound = new WebAudio(this.audioCtx, 'audio/vinyl-sounds/vinyl-crackle-end-loop.mp3', 128, 32, 0.1);
-    this.volumeBttn = new VolumeButton(this.waMusic);
+    AudioService.setTrack();
+    AudioService.setEffects();
+    this.volumeBttn = new VolumeButton();
 
-    this.waMusic.getAudioTrack().onended = () => {
+    AudioService.getTrack().onended = () => {
       this.end();
-      this.waVinylSound.getAudioTrack().pause();
-      this.vinylLP.pause();
+      AudioService.getFXTrack().pause();
+      VinylLP.pause();
     }
 
     this.frameLoop = () => {
       requestAnimationFrame(this.frameLoop);
 
       if (this.playState) {
-        const audioData = this.waMusic.updateData();
-        const vinylAudioData = this.waVinylSound.updateData();
+        const audioData = AudioService.updateTrackData();
+        const vinylAudioData = AudioService.updateFXData();
+        const trackCurrentTime = AudioService.getTrack().getAudioTrack().currentTime;
+        const trackDuration = AudioService.getTrack().getAudioTrack().duration;
 
         // Combine static vinyl and music to one audioData
         const audioDataOutput = audioData.map((val, index) => {
           return val + vinylAudioData[index];
         });
 
-        this.equalizer.plotNewPositions(audioDataOutput);
-        this.equalizerTop.plotNewPositions(audioDataOutput);
-        this.timeline.setNewPosition(this.waMusic.getAudioTrack().currentTime, this.waMusic.getAudioTrack().duration);
+        GraphicEqualizerService.UpdatePositions(audioDataOutput);
 
-        if (this.waVinylSound.getAudioTrack().currentTime > 9) {
-          this.waVinylSound.getAudioTrack().currentTime = 0;
+        this.timeline.setNewPosition(trackCurrentTime, trackDuration);
+
+        if (AudioService.getFXTrack().currentTime > 9) {
+          AudioService.getFXTrack().currentTime = 0;
         }
       }
     };
@@ -110,16 +73,16 @@ class Player {
 
   setPlayPause() {
     if (this.playState) {
-      this.waMusic.getAudioTrack().pause();
-      this.waVinylSound.getAudioTrack().pause();
-      this.vinylLP.pause();
-      this.playPauseButton.setPausedMode();
+      AudioService.getTrack().pause();
+      AudioService.getFXTrack().pause();
+      VinylLP.pause();
+      PlayButton.setPausedMode();
     }
     else {
-      this.waMusic.getAudioTrack().play();
-      this.waVinylSound.getAudioTrack().play();
-      this.vinylLP.play();
-      this.playPauseButton.setPlayingMode();
+      AudioService.getTrack().play();
+      AudioService.getFXTrack().play();
+      VinylLP.play();
+      PlayButton.setPlayingMode();
     }
 
     this.playState = !this.playState;
@@ -127,7 +90,7 @@ class Player {
 
   end() {
     if (this.playState) {
-      this.playPauseButton.setPausedMode();
+      PlayButton.setPausedMode();
       this.playState = false;
     }
   }
@@ -138,10 +101,9 @@ class Player {
 
   start() {
     this.frameLoop();
-    this.equalizer.init();
-    this.equalizerTop.init();
+    GraphicEqualizerService.initAll();
     this.timeline.init();
   }
 }
 
-export default Player;
+export default new Player();
